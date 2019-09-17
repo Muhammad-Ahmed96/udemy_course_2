@@ -1,0 +1,12 @@
+%h1 My Portfolio
+
+= link_to "New Portfolio", new_protfolio_path
+-@profolios.each do |item|
+  %p= item.title
+  %p= item.body[0..10]+"..."
+  %b{style: 'color:red!important'}= link_to item.status, toggle_status_protfolio_path(item)
+  %br
+  = image_tag item.tumb_image if item.tumb_image.present?
+  %p= link_to "Show", protfolio_path(item)
+  %p= link_to "Edit", edit_protfolio_path(item)
+  %p= link_to "Delete", protfolio_path(item), method: :delete, data: { confirm: "Are you sure want to delete?"}

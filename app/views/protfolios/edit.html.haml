@@ -1,0 +1,12 @@
+%h1
+  Edit Portfolio
+
+= form_for @portfolio do |f|
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :body
+  = f.text_area :body
+
+  %br
+  =f.submit

@@ -1,0 +1,10 @@
+%h1 Portfolio
+
+%h2= @portfolio.title
+
+%p= @portfolio.body
+
+= image_tag @portfolio.tumb_image if @portfolio.tumb_image.present?
+%br
+
+= link_to "back", protfolios_path
