@@ -5,10 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+3.times do |topic|
+	Topic.create!(
+		title: "Topic #{topic+1}"
+	)
+end
 9.times do |portfolio_item|
   Protfolio.create!(
     title: portfolio_item,
+    subtitle: "Ruby on Rails",
     body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     main_image: 'https://via.placeholder.com/300x150.png',
     tumb_image: 'https://via.placeholder.com/600x200.png'
@@ -19,5 +24,12 @@ end
 	Blog.create!(
 		title: "blog #{blog}",
 	    body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+	    topic: Topic.last
 		)
 end	
+
+3.times do |tech|
+	Protfolio.last.technologies.create!(
+		name: "Technology #{tech+1}"
+		)
+end

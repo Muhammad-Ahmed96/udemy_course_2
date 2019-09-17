@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_061905) do
+ActiveRecord::Schema.define(version: 2019_09_17_120032) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_061905) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.integer "status", default: 0
+    t.string "subtitle"
     t.index ["slug"], name: "index_protfolios_on_slug", unique: true
   end
 
@@ -64,6 +65,14 @@ ActiveRecord::Schema.define(version: 2019_09_17_061905) do
     t.integer "percentage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "technologies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "protfolio_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["protfolio_id"], name: "index_technologies_on_protfolio_id"
   end
 
   create_table "topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,4 +95,5 @@ ActiveRecord::Schema.define(version: 2019_09_17_061905) do
   end
 
   add_foreign_key "blogs", "topics"
+  add_foreign_key "technologies", "protfolios"
 end

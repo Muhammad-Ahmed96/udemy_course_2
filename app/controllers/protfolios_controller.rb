@@ -1,7 +1,15 @@
 class ProtfoliosController < ApplicationController
   before_action :set_portfolio, only: [:update,:edit,:show,:toggle_status]
   def index
-    @profolios = Protfolio.all
+    if params.present? and params[:type].present?
+      if params[:type] == "ror"
+        @profolios = Protfolio.ror
+      elsif params[:type] == "angular"
+        @profolios = Protfolio.angular
+      end
+    else
+      @profolios = Protfolio.all
+    end
   end
 
   def new
