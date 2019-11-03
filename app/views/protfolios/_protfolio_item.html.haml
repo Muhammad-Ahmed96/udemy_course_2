@@ -1,0 +1,19 @@
+%div.row
+	%div.col-lg-6.offset-3
+		%div.card
+			%div.card-header.text-center
+				= link_to protfolio_item.title, protfolio_show_path(protfolio_item)
+			%div.card-body.text-center
+				%p= protfolio_item.body[0..10]+"..."
+				%p= protfolio_item.subtitle
+				%b{style: 'color:red!important'}= link_to protfolio_item.status, toggle_status_protfolio_path(protfolio_item)
+				%br
+				= image_tag protfolio_item.main_image if protfolio_item.main_image.present?
+				%br
+				%div.row.mt-2
+					%div.col-lg-4
+						= link_to "Show", protfolio_show_path(protfolio_item), class: 'btn btn-primary btn-block'
+					%div.col-lg-4
+						= link_to "Edit", edit_protfolio_path(protfolio_item), class: 'btn btn-success btn-block'
+					%div.col-lg-4
+						= link_to "delete", protfolio_path(protfolio_item), method: :delete, data: { confirm: "Are you sure want to delete?"}, class: 'btn btn-danger btn-block'

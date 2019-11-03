@@ -3,12 +3,12 @@ class ProtfoliosController < ApplicationController
   def index
     if params.present? and params[:type].present?
       if params[:type] == "ror"
-        @profolios = Protfolio.ror
+        @protfolio_items = Protfolio.ror
       elsif params[:type] == "angular"
-        @profolios = Protfolio.angular
+        @protfolio_items = Protfolio.angular
       end
     else
-      @profolios = Protfolio.all
+      @protfolio_items = Protfolio.all
     end
   end
 

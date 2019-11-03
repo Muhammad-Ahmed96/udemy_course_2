@@ -2,12 +2,21 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:name=>"viewport",:content=>"width=device-width, initial-scale=1.0"}/
     %title First
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    / %p.notice= notice
+    / %p.alert= alert
+    %div.d-flex.w-100.h-100.p-3.mx-auto.flex-column
+      %header.masthead.mb-auto.cover-container.text-center.container
+        %div.inner
+          =render 'shared/application_nav'
+      %main.inner.cover{:role=> "main" }
+        = yield
+      %footer.mastfoot.mt-auto
+        .inner
+          %p &copy; Devbox.co, 2019

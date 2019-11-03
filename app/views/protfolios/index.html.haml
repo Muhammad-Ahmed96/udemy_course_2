@@ -1,18 +1,11 @@
-%h1 My Portfolio
+%div.row.text-center
+	%div.col-lg-4.offset-4
+		%h1 My Portfolio
 
-= link_to "New Portfolio", new_protfolio_path
-%br
-%br
-= link_to "Angular", protfolios_path(type: "angular")
-&nbsp;&nbsp;&nbsp;
-= link_to "Ruby on Rails", protfolios_path(type: "ror")
--@profolios.each do |item|
-  %p= link_to item.title, protfolio_show_path(item)
-  %p= item.body[0..10]+"..."
-  %p= item.subtitle
-  %b{style: 'color:red!important'}= link_to item.status, toggle_status_protfolio_path(item)
-  %br
-  = image_tag item.main_image if item.main_image.present?
-  %p= link_to "Show", protfolio_show_path(item)
-  %p= link_to "Edit", edit_protfolio_path(item)
-  %p= link_to "Delete", protfolio_path(item), method: :delete, data: { confirm: "Are you sure want to delete?"}
+		= link_to "New Portfolio", new_protfolio_path
+		%br
+		%br
+		= link_to "Angular", protfolios_path(type: "angular")
+		&nbsp;&nbsp;&nbsp;
+		= link_to "Ruby on Rails", protfolios_path(type: "ror")
+=render partial: 'protfolio_item', collection: @protfolio_items
